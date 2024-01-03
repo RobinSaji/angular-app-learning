@@ -1,0 +1,17 @@
+<!--
+This filer component is a child component of the product list component 
+So in order to get the data from the parent component to the child component we need to use the 
+Custom Property Binnding 
+@Input
+-->
+<div class="filter-container">
+    <span>Filter:</span>
+    <input type="radio" name="filter" value="all" [(ngModel)]=" selectedFilterRadioButton" (change) ="onSelectedFilterRadioButtonChanged()"/>  
+    <span>{{'All('+all+')'}}</span>
+
+    <input type="radio" name="filter" value="true"  [(ngModel)]=" selectedFilterRadioButton" (change) ="onSelectedFilterRadioButtonChanged()"/>
+    <span>{{'In Stock('+inStock+')'}}</span>
+
+    <input type="radio" name="filter" value="false"  [(ngModel)]=" selectedFilterRadioButton" (change) ="onSelectedFilterRadioButtonChanged()"/>
+    <span>{{'Out Of Stock(' +outOfStock+')'}}</span>
+</div>

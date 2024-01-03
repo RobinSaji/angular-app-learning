@@ -1,0 +1,24 @@
+<div class="ekart--search--product">
+    <!-- <input type="text" class="ekart-search-product-input" [value]="searchText" (input)="getValue($event)"> -->
+    <input type="text" class="ekart-search-product-input"  #searchInput>
+    <!-- Template reference variable:
+    the #searchInput is  a refernce to the input element in which we have defined it  since we ave store dthe reference if the DOM Elmenet we can manipulate it.-->
+    
+    <!--  ngClass:
+    ngClass is an attribute directive used to dynamically add or remove CSS classes to/from an HTML element based on expressions in your template.
+    [ngClass]="{'btn' :true,'btn-search':searchText,'btn-search-disabled':!searchText}" [disabled]="!searchText"   -->
+
+    <!-- Now we need to pass the text which the user is written in the input tag to the the button  -->
+    <button class="btn btn-search" (click)="setSearchText()">Search</button>
+</div>
+<!-- ngIf :
+is a structural directive used for conditionally rendering elements in the DOM. 
+It evaluates an expression and displays or hides the associated element based on the truthiness of the expression.-->
+<div class="ekart-search-result-for"> <p *ngIf="searchText !=''"><strong>Serach result for:</strong> {{ searchText }}</p>   </div>
+
+
+
+<!-- <div class="ekart-product-cintainer-header">SHOES</div>
+<div class="ekart--products--container">
+
+</div> -->

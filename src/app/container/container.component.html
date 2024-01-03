@@ -1,0 +1,97 @@
+<!-- <p>Name:{{name}}</p>
+<p>Price:${{price}}</p>
+<p>Color:{{color}}</p>
+<p>Discounted Price:$798</p> -->
+
+
+<!--Here we are using property binding. it also is used to display the data in component file in html template. the fference between string interpolation and property binding 
+is
+ *)String interpolation uses double curly braces {{ }} in the template to insert values or expressions from the component class.
+ *) Property binding uses square brackets [ ] in the template to bind an HTML element's property (attribute) to a property or expression in the component class.
+ *) both string interpolation and property binding are mechanisms for displaying data in your Angular templates,
+  but they are used in slightly different contexts. String interpolation is mainly used for displaying text and expressions within 
+  the template, while property binding is used for binding element properties (attributes) to component properties or expressions. The choice between them depends on 
+  what you want to achieve and which HTML element properties you need to bind to.
+-->
+<div class="ekart-product--container">
+
+
+  <!-- <img [src]="product.object" alt=""> -->
+<!-- this comes under string interpolation topic ,here we we collect the data from the component.ts file and use it in the html temolate file
+this can can be helpful in the flow of data between both files . it is used by calling the values in the component file within a {{}} -->
+
+       <!-- <p>Name:{{product.name}}</p> -->
+       <!--
+      <p>Price:${{product.price}}</p>
+      <p>Color:{{product.color}}</p>
+      <p>Discounted Price:{{getDiscountedprice()}}</p>
+      <p>{{product.inStock > 0 ? 'Only '+ product.inStock +' items left':'not in stock'}}</p>    <!- this is a ternary operator -->
+  
+      <!-- <button  (click)="decrementcartvalue()" [disabled]="addToCart <= 0">-</button>
+    <span>{{addToCart}}</span>
+    <button (click)="incrementcartvalue()" [disabled]="addToCart >= product.inStock">+</button> --> 
+    <!-- <input bind-value="name" >  --><!--instead of using [] in property binding we can also use bind- in fron of the property-->
+
+
+     <!-- <input (input)="onNameChange($event)"> Event Binding Example
+    <p>{{name}}</p> -->
+
+
+<!--
+    for HTML attributes like 
+    *)dissable
+    *)hidden
+    *)Checked
+
+    string interpolation will not work
+    if we need to apply any dynaic value e use property binding
+
+-->
+<!-- custom event binding -->
+<app-search (SearchTextChanged)="setsearchText($event)"></app-search>
+<!-- custom propetry binding -->
+<product-list [searchText]="searchText" #productListComponent></product-list>  <!--this productlist component is called in the container component using viewchild 
+  and then it is assigned by propertname "productListComponent"  then this component is called from the container component to product-detail component using @Input 
+  decorator . That way we can transfer data and can manupulate the dom elemnts between two sibling components
+                                                                        | 
+                                                                      V   V
+                                                                        V          -->
+<product-detail *ngIf="productListComponent.selectedProduct" [productListComp]="productListComponent"></product-detail>
+<!-- using template refrence property we are able to fetch the data data from the product-list and  -->
+
+
+  <!-- the below code is for the example of ng-content -->
+  <div class="ekart-featured-products">
+    <div class="ekart-featured-product-heading">
+      <h1>Latest Arrival in Popular Brands</h1>
+    </div>
+    
+      <featured-brands>
+        <h3 class="title">New Arrivals in Nike</h3>
+        <button class="call-to-action">Show new Arrivals in Nike</button>
+        </featured-brands>
+        
+      <featured-brands>
+        <h3 class="title">New Arrivals in Adidas</h3>
+        <button class="call-to-action">Show new Arrivals in Addidas</button>
+      </featured-brands>
+
+      <featured-brands>
+        <h3 class="title">New Arrivals in Reebok</h3>
+        <button class="call-to-action">Show new Arrivals in Reebok </button>
+      </featured-brands>
+    <!-- ----------------------------------------------------- -->
+      
+  </div>
+
+</div>
+ 
+
+<!--EVENT Binding 
+  Event Binding is opposite of String interpolation and property binding in event binding we will try to bing data from view template to component class
+  using event binding we can inform component class if there is somethin happending in the webpage.
+  
+  Event binding is a fundamental concept in Angular that allows you to respond to user interactions, 
+  such as clicks, keyboard input, mouse movements, and more, by binding methods or functions in your component class to events in your HTML templates. 
+  It enables you to create dynamic and interactive web applications by handling user actions and triggering actions in response.
+-->

@@ -1,0 +1,34 @@
+<app-filter 
+[all]="totalProductCount" 
+[inStock]="totalProductInStock" 
+[outOfStock]="totalProductOutOfStock" 
+(selectedFilterRadioButtonChanged)=" onFilterChanged($event)">
+
+</app-filter>
+<!-- using custom property  binding here we are passing the data from the parent component ot the child component
+whatever the value we are assigned to the "[all] property " it will be applied to the [all] property in the child class-->
+<div class="ekart--products--container">
+    <ng-container *ngFor="let prod of products"><!--This for loop is used to loop through all the elements  -->
+        <!-- This if condition will select the elemnets based on the condition -->
+     
+        <div *ngIf="selectedFilterRadioButton === 'all' || prod.is_in_inventory.toString()  === selectedFilterRadioButton" >
+
+         <app-product [product]="prod" 
+        *ngIf="searchText==='' || prod.name.toLowerCase().includes(searchText)"
+        (click)="selectedProduct = prod">
+        </app-product>
+        </div>
+        
+    </ng-container>
+    
+</div>
+
+ 
+
+<!-- product-list (Parent Component)
+            |
+            |
+         V     V    Custom property binfing
+          V V V     & @Input() Decorator
+            V
+        product (Child Component)-->
